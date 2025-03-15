@@ -23,6 +23,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--> Module controller sẽ phụ thuộc vào Module application-->
         <dependency>
             <groupId>com.instagram</groupId>
             <artifactId>Instagram-application</artifactId>

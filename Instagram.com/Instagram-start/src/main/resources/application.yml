@@ -1,3 +1,4 @@
+#file cấu hình ứng dụng
 server:
   port: 8085
 
@@ -17,3 +18,4 @@ spring:
       format_sql: true
       user_sql_comments: true
 
+# Lí do tại sao lại dùng yml ?? chờ docx nha ae

@@ -6,6 +6,7 @@ import com.instagram.persistence.model.entity.UserInfrastructureEntity;
 
 public class UserMapper {
 
+    // chuyển đổi đối tượng UserInfrastructureEntity thành UserDomainEntity
     public static UserDomainEntity toDomain(UserInfrastructureEntity entity) {
         if (entity == null) {
             return null;
@@ -18,6 +19,7 @@ public class UserMapper {
         );
     }
 
+    // chuyển đổi đối tượng UserDomainEntity thành UserInfrastructureEntity
     public static UserInfrastructureEntity toEntity(UserDomainEntity domain) {
         if (domain == null) {
             return null;

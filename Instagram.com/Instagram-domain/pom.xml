@@ -11,6 +11,7 @@
 
     <artifactId>Instagram-domain</artifactId>
 
+    <!--> không phụ thuộc vào bất cứ Module nào (không care thành phần nào) vì nó chỉ chứa nghiệp vụ của dự án-->
     <properties>
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>

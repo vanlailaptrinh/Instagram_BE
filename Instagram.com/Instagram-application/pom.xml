@@ -17,15 +17,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!--> Module application sẽ phụ thuộc vào Module domain-->
     <dependencies>
         <dependency>
             <groupId>com.instagram</groupId>
             <artifactId>Instagram-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!--> Module application sẽ phụ thuộc vào Module infrastructure, vì có 1 Bean của Module domain
+        nằm trong Module infrastructure-->
         <dependency>
             <groupId>com.instagram</groupId>
-            <artifactId>Instagram-insfrastruture</artifactId>
+            <artifactId>Instagram-infrastructure</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
