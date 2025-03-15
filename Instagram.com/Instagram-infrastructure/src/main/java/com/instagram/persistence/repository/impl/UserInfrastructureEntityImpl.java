@@ -9,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
+// impl interface cua DomainRepository
 public class UserInfrastructureEntityImpl implements UserDomainRepository {
 
-    @Resource
+    //rcm dùng Constructor Injection (giống C#)
+    @Autowired
     private JpaUserRepository jpaUserRepository;
+
     @Override
     public UserDomainEntity createUser(UserDomainEntity user) {
         return UserMapper.toDomain(jpaUserRepository.save(UserMapper.toEntity(user)));

@@ -4,13 +4,18 @@ import com.instagram.model.entity.UserDomainEntity;
 import com.instagram.repository.user.UserDomainRepository;
 import com.instagram.services.user.UserDomainServices;
 import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+//impl interface của DomainServices
 public class UserDomainServicesImpl implements UserDomainServices {
 
-    @Resource
+    //rcm dùng Constructor Injection (giống C#)
+    @Autowired
     private UserDomainRepository userDomainRepository;
+    // tìm 1 Bean tương ứng trong Spring Context để tiêm vào, cụ thể là lớp UserInfrastructureEntityImpl
+
     @Override
     public UserDomainEntity createUser(UserDomainEntity user) {
         return userDomainRepository.createUser(user);

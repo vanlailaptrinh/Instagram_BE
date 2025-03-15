@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>Instagram-start</module>
-        <module>Instagram-insfrastruture</module>
+        <module>Instagram-infrastructure</module>
         <module>Instagram-controller</module>
         <module>Instagram-application</module>
         <module>Instagram-domain</module>
@@ -23,23 +23,27 @@
     </properties>
 
 
+    <!-->  Quản lí phiên bản phụ thuộc cho toàn bộ dự án, nêu cao tinh thần "nhất quán" -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.4.3</version>
+                <version>3.4.3</version> <!--> Phiên bản Spring Boot sử dụng trong dự án-->
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
+
+    <!--> Đảm bảo module có đầy đủ dependency cần thiết khi chạy trong Spring Boot-->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>

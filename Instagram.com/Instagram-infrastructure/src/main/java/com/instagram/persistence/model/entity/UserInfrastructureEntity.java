@@ -12,7 +12,7 @@ import java.util.UUID;
 @Table(name = "users")
 @DynamicUpdate
 @DynamicInsert
-public class UserInfrastructureEntity {
+public class UserInfrastructureEntity {  // entity để tương tác với csdl ( hạ tầng bên dưới )
 
     @Id
     private UUID id;
@@ -29,6 +29,8 @@ public class UserInfrastructureEntity {
     @Column(nullable = false)
     private boolean active;
 
+
+    // sẽ gọi generateId() trước khi entity này được lưu vào csdl (chỉ áp dụng với entity mới)
     @PrePersist
     public void generateId() {
         if (this.id == null) {

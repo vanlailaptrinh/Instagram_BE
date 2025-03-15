@@ -26,6 +26,8 @@
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
         </dependency>
+
+        <!--> Module start sẽ phụ thuộc vào Module controller-->
         <dependency>
             <groupId>com.instagram</groupId>
             <artifactId>Instagram-controller</artifactId>
