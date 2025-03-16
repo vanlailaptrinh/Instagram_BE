@@ -7,6 +7,8 @@ import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 //impl interface của DomainServices
 public class UserDomainServicesImpl implements UserDomainServices {
@@ -19,5 +21,15 @@ public class UserDomainServicesImpl implements UserDomainServices {
     @Override
     public UserDomainEntity createUser(UserDomainEntity user) {
         return userDomainRepository.createUser(user);
+    }
+
+    @Override
+    public List<UserDomainEntity> findUsersByUsername(String username){
+        return userDomainRepository.findUsersByUsername(username);
+    }
+
+    @Override
+    public List<UserDomainEntity> getAllUsers() {
+        return userDomainRepository.getAllUsers();
     }
 }

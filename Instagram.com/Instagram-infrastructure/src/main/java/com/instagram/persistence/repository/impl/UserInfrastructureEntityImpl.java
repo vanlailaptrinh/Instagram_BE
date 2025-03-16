@@ -6,7 +6,10 @@ import com.instagram.persistence.repository.JpaUserRepository;
 import com.instagram.repository.user.UserDomainRepository;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 // impl interface cua DomainRepository
@@ -19,5 +22,21 @@ public class UserInfrastructureEntityImpl implements UserDomainRepository {
     @Override
     public UserDomainEntity createUser(UserDomainEntity user) {
         return UserMapper.toDomain(jpaUserRepository.save(UserMapper.toEntity(user)));
+    }
+
+    @Override
+    public List<UserDomainEntity> findUsersByUsername(String username){
+        return jpaUserRepository.findByUsername(username)
+                .stream()
+                .map(UserMapper::toDomain)
+                .toList();
+    }
+
+    @Override
+    public List<UserDomainEntity> getAllUsers() {
+        return jpaUserRepository.findAll()
+                .stream()
+                .map(UserMapper::toDomain)
+                .toList();
     }
 }

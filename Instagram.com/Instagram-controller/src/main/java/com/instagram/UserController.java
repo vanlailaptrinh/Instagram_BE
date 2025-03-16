@@ -4,10 +4,9 @@ package com.instagram;
 import com.instagram.model.entity.UserDomainEntity;
 import com.instagram.services.user.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -22,4 +21,13 @@ public class UserController {
         return userServices.createUser(user);
     }
 
+    @GetMapping("/get-by-user-name")
+    public List<UserDomainEntity> findUsersByUsername(@RequestParam String username) {
+        return userServices.findUsersByUsername(username);
+    }
+
+    @GetMapping("/get-all")
+    public List<UserDomainEntity> getAllUsers() {
+        return userServices.getAllUsers();
+    }
 }
