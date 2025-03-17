@@ -26,7 +26,7 @@ public class UserInfrastructureEntityImpl implements UserDomainRepository {
 
     @Override
     public List<UserDomainEntity> findUsersByUsername(String username){
-        return jpaUserRepository.findByUsername(username)
+        return jpaUserRepository.findByUsernameContaining(username)
                 .stream()
                 .map(UserMapper::toDomain)
                 .toList();

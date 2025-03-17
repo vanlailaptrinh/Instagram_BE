@@ -29,6 +29,5 @@ public class UserController {
     @GetMapping("/get-all")
     public List<UserDomainEntity> getAllUsers() {
         return userServices.getAllUsers();
-        //abc
     }
 }

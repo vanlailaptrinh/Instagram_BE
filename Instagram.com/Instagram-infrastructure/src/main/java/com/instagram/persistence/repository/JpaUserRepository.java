@@ -9,5 +9,5 @@ import java.util.UUID;
 //một interface trong Spring Boot sử dụng Spring Data JPA để thao tác với bảng
 // UserInfrastructureEntity trong cơ sở dữ liệu
 public interface JpaUserRepository extends JpaRepository<UserInfrastructureEntity, UUID> {
-    List<UserInfrastructureEntity> findByUsername(String username);
+    List<UserInfrastructureEntity> findByUsernameContaining(String username);
 }
