@@ -8,6 +8,8 @@ import java.util.List;
 // interface này giúp Module Application có thể giao tiếp với Module Domain
 public interface UserDomainServices {
     UserDomainEntity createUser(UserDomainEntity user);
+    UserDomainEntity updateUser(UserDomainEntity user, UUID userId);
+    void deleteUser(UUID userId);
     List<UserDomainEntity> findUsersByUsername(String username);
     List<UserDomainEntity> getAllUsers();
 }

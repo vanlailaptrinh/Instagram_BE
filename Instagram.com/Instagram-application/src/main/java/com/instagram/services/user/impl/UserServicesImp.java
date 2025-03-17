@@ -20,6 +20,15 @@ public class UserServicesImp implements UserServices {
     }
 
     @Override
+    public UserDomainEntity updateUser(UserDomainEntity user, UUID userId){
+        return userDomainServices.updateUser(user, userId);
+    }
+
+    public void deleteUser(UUID userId){
+        userDomainServices.deleteUser(userId);
+    }
+
+    @Override
     public List<UserDomainEntity> findUsersByUsername(String username){
         return userDomainServices.findUsersByUsername(username);
     }

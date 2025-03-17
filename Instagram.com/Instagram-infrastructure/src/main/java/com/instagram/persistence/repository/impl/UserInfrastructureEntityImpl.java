@@ -25,6 +25,30 @@ public class UserInfrastructureEntityImpl implements UserDomainRepository {
     }
 
     @Override
+    public UserDomainEntity updateUser(UserDomainEntity user, UUID userId){
+        UserInfrastructureEntity existingUser = jpaUserRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        existingUser.setUsername(user.getUsername());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setActive(user.isActive());
+
+        UserInfrastructureEntity updateUser = jpaUserRepository.save(existingUser);
+        return UserMapper.toDomain(updateUser);
+    }
+
+    @Override
+    public void deleteUser(UUID userId) {
+        jpaUserRepository.findById(userId).ifPresentOrElse(
+                user -> jpaUserRepository.deleleById(userId),
+                () -> {
+                    throw new RuntimeException("User not found");
+                }
+        );
+    }
+
+    @Override
     public List<UserDomainEntity> findUsersByUsername(String username){
         return jpaUserRepository.findByUsernameContaining(username)
                 .stream()

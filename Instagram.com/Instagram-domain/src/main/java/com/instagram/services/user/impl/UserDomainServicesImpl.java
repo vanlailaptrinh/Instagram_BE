@@ -24,6 +24,16 @@ public class UserDomainServicesImpl implements UserDomainServices {
     }
 
     @Override
+    public UserDomainEntity updateUser(UserDomainEntity user, UUID userId){
+        return userDomainRepository.updateUser(user, userId);
+    }
+
+    @Override
+    public void deleteUser(UUID userId) {
+        userDomainRepository.deleteUser(userId);
+    }
+
+    @Override
     public List<UserDomainEntity> findUsersByUsername(String username){
         return userDomainRepository.findUsersByUsername(username);
     }
