@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mySQL://localhost:3306/instagram
     username: root
-    password: van3
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
