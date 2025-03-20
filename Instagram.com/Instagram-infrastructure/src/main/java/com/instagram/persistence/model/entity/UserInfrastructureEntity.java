@@ -7,8 +7,7 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @Entity
@@ -20,6 +19,7 @@ import java.util.UUID;
 public class UserInfrastructureEntity {  // entity để tương tác với csdl ( hạ tầng bên dưới )
 
     @Id
+    @GeneratedValue
     private UUID userId;
 
     @Column(columnDefinition = "varchar(50) comment 'user name'", nullable = false)
@@ -36,6 +36,14 @@ public class UserInfrastructureEntity {  // entity để tương tác với csdl
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostInfrastructureEntity> postList ;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleId")
+    )
+    private Set<RoleInfrastructureEntity> roles = new HashSet<>();
 
     // sẽ gọi generateId() trước khi entity này được lưu vào csdl (chỉ áp dụng với entity mới)
     @PrePersist
