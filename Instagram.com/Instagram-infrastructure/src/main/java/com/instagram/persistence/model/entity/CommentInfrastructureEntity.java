@@ -51,17 +51,11 @@ public class CommentInfrastructureEntity {
         this.deleteAt = deleteAt;
     }
 
-    //tạo id trước khi lưu đối tượng vào db
     @PrePersist
-    private void generateId() {
+    private void genIdAndDate(){
         if (this.commentId == null) {
             this.commentId = IdGenerator.generateUUID();
         }
-    }
-
-    //tạo createAt trước khi lưu đối tượng vào dbs
-    @PrePersist
-    private void generateCreateAt() {
         if (this.createAt == null) {
             this.createAt = Instant.now();
         }

@@ -4,6 +4,7 @@ import com.instagram.model.entity.CommentDomainEntity;
 import com.instagram.persistence.mapper.CommentMapper;
 import com.instagram.persistence.model.entity.CommentInfrastructureEntity;
 import com.instagram.persistence.repository.JpaCommentRepository;
+import com.instagram.persistence.repository.JpaPostRepository;
 import com.instagram.repository.comment.CommentDomainRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
