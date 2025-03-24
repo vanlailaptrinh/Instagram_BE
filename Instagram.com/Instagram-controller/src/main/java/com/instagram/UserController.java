@@ -29,8 +29,8 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}/delete")
-    public void deleteUser(@PathVariable UUID userId){
-        return userServices.deleteUser(userId);
+    public void deleteUser(@PathVariable (name = "userId") UUID userId){
+        userServices.deleteUser(userId);
     }
 
     @GetMapping("/get-by-user-name")

@@ -2,6 +2,7 @@ package com.instagram.persistence.repository.impl;
 
 import com.instagram.model.entity.UserDomainEntity;
 import com.instagram.persistence.mapper.UserMapper;
+import com.instagram.persistence.model.entity.UserInfrastructureEntity;
 import com.instagram.persistence.repository.JpaUserRepository;
 import com.instagram.repository.user.UserDomainRepository;
 import jakarta.annotation.Resource;
@@ -32,7 +33,7 @@ public class UserInfrastructureEntityImpl implements UserDomainRepository {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         existingUser.setUsername(user.getUsername());
-        existingUser.setEmail(user.getEmail());
+        existingUser.setEmail(UserMapper.toEntity(user).getEmail());
         existingUser.setPassword(user.getPassword());
         existingUser.setActive(user.isActive());
 
@@ -43,7 +44,7 @@ public class UserInfrastructureEntityImpl implements UserDomainRepository {
     @Override
     public void deleteUser(UUID userId) {
         jpaUserRepository.findById(userId).ifPresentOrElse(
-                user -> jpaUserRepository.deleleById(userId),
+                user -> jpaUserRepository.deleteById(userId),
                 () -> {
                     throw new RuntimeException("User not found");
                 }
@@ -65,4 +66,12 @@ public class UserInfrastructureEntityImpl implements UserDomainRepository {
                 .map(UserMapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public UserDomainEntity findUsersById(UUID userId) {
+        return jpaUserRepository.findById(userId)
+                .map(UserMapper::toDomain)
+                .orElseThrow(() -> new RuntimeException("User không tồn tại với id: " + userId));
+    }
+
 }

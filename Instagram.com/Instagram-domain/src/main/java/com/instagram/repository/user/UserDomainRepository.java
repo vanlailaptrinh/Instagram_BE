@@ -13,4 +13,6 @@ public interface UserDomainRepository {
     void deleteUser(UUID userId);
     List<UserDomainEntity> findUsersByUsername(String username);
     List<UserDomainEntity> getAllUsers();
+    UserDomainEntity findUsersById(UUID userId);
+
 }
